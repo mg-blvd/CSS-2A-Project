@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../Panel.cpp" />
+		<Unit filename="../Panel.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
