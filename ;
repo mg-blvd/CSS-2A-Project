@@ -1,0 +1,14 @@
+#include "Grid_H.hpp"
+#include <iostream>
+
+using namespace std;
+
+Grid::Grid() {
+  for(int r = 0; r < 20; r++) {
+    for(int c = 0; c < 40; c++) {
+      if(r == 0 || r == 19 || c == 0 || c == 39) 
+        cout << gridChar;
+    }
+    cout << endl;
+  }
+}
