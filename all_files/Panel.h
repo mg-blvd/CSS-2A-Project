@@ -11,7 +11,7 @@ class Panel
         Panel(char newChar) {display_char = newChar;}
         char getChar()const {return display_char;}
         void setChar(char newChar) {display_char = newChar;}
-         display()
+         display() {cout << display_char;}
 
     private:
         char display_char;

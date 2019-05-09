@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1555439068 source:c:\users\jenni\desktop\projectsketch\src\character.cpp
+	"Character.h"
+	<iostream>
+
+1555439217 c:\users\jenni\desktop\projectsketch\include\character.h
+
