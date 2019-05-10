@@ -6,6 +6,7 @@ Character::Character()
 {
     //ctor
     life = 3;
+    signal = '*';
 }
 Character::Character(int life)
 {
@@ -13,5 +14,5 @@ Character::Character(int life)
 }
 void Character::display()
 {
-    cout << "*";
+    cout << signal;
 }

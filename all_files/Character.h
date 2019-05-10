@@ -14,6 +14,7 @@ class Character
         void display();
     private:
         int life;
+        char signal;
 };
 
 #endif // CHARACTER_H

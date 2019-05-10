@@ -1,14 +1,16 @@
 #ifndef Grid_H
 #define Grid_H
+#include "Panel.h"
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 class Grid {
   public:
     Grid();
-
-    //void setGridChar() {this -> gridChar = gridChar;}
-
-    char getGridChar(char gridChar) {return gridChar;}
+    void display() const;
+    friend ostream& operator << (ostream& out, const Grid& myGrid);
   private:
-    char gridChar ='|';
+     Panel ourGrid[5][3];
 };
 #endif

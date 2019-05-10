@@ -1,20 +1,23 @@
 #ifndef PANEL_H
 #define PANEL_H
 #include <iostream>
+#include <string>
+#include <fstream>
 using namespace std;
 
 
 class Panel
 {
     public:
-        Panel() {display_char = '=';}
-        Panel(char newChar) {display_char = newChar;}
-        char getChar()const {return display_char;}
-        void setChar(char newChar) {display_char = newChar;}
-         display() {cout << display_char;}
+        Panel();
+        Panel(string newChar);
+        char getChar()const {return displayChar;}
+        void setChar(char newChar) {displayChar = newChar;}
+        void display()const {cout << displayChar;}
+        friend ostream& operator << (ostream& out, const Panel& myPanel);
 
     private:
-        char display_char;
+        char displayChar;
 };
 
 #endif // PANEL_H
