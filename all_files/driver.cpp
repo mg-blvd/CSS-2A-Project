@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cctype>
 #include <conio.h>
+#include <thread>
 #include "Grid_H.hpp"
 #include "Panel.h"
 #include "Character.h"
