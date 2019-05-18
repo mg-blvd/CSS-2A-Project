@@ -21,6 +21,7 @@ Description: This program will run an endless runner kind of game where you are 
 
 using namespace std;
 
+
 //*************************************************************************************************
 void playGame(Grid& table, Character& player);
 //Summary: With help from other functions, this function organizes the game logic. It starts the
@@ -163,24 +164,38 @@ void phase2(const Grid& table, Character& player, int lineNum)
 
 void phase3(Grid& table, Character& player, int lineNum, unsigned& score)
 {
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
   int secondLine = getSecondLine(lineNum);
   table.displayBlanks();
   table.displayBlanks();
   table.displayLine(secondLine);
   table.displayBlanks();
   table.displayBlanks();
+  SetConsoleTextAttribute(hConsole, 1);
   cout << "! ";
   for(int i = 0; i < 3; i++)
   {
     if(player.getPos() == i)
+    {
+      SetConsoleTextAttribute(hConsole, 6);
       cout << player.getChar() << " ";
+    }
     else
-      cout << table.getPanelChar(lineNum, i) << " ";
+    {
+        if(table.getPanelChar(lineNum, i) == '=')
+            SetConsoleTextAttribute(hConsole, 2);
+        else
+            SetConsoleTextAttribute(hConsole, 14);
+        cout << table.getPanelChar(lineNum, i) << " ";
+    }
   }
+  SetConsoleTextAttribute(hConsole, 1);
   cout << "!" << endl;
   if(table.getPanelChar(lineNum, player.getPos()) == '=')
   {
     player.loseHealth();
+    SetConsoleTextAttribute(hConsole, 15);
     cout << "Hit a wall. Player health is now " << player.getLife() << endl;
   }
   else
@@ -189,6 +204,8 @@ void phase3(Grid& table, Character& player, int lineNum, unsigned& score)
 
 void loadBoard(Grid& table, Character& player, unsigned& score)
 {
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     //Speed starts off at 1000. This means that the board will refresh every second.
     int speed = 1000;
     while(player.getLife() > 0)
@@ -213,5 +230,6 @@ void loadBoard(Grid& table, Character& player, unsigned& score)
         //This next line increases the speed by 15 percent.
         speed *= .85;
     }
+    SetConsoleTextAttribute(hConsole, 15);
     cout << "Hit any button to continue\n";
 }

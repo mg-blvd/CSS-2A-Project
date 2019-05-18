@@ -3,7 +3,9 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <windows.h>
 using namespace std;
+
 
 Grid::Grid() {
   int spacePos;
@@ -49,19 +51,38 @@ void Grid::display()const
 
 void Grid::displayLine(int lineNum)const
 {
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
   for(int y = 0; y < 3; y++)
   {
     if(y == 0)
-      cout << "! ";
+    {
+        SetConsoleTextAttribute(hConsole, 1);
+        cout << "! ";
+    }
+    if(ourGrid[lineNum][y].getChar() == '=')
+        SetConsoleTextAttribute(hConsole, 2);
+    else
+        SetConsoleTextAttribute(hConsole, 14);
     cout << ourGrid[lineNum][y] << " ";
     if(y == 2)
-      cout << "!\n";
+    {
+        SetConsoleTextAttribute(hConsole, 1);
+        cout << "!\n";
+    }
   }
 }
 
 void Grid::displayBlanks()const
 {
-  cout << "! | | | !\n";
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 1);
+    cout << "! ";
+    SetConsoleTextAttribute(hConsole, 14);
+    cout << "| | | ";
+    SetConsoleTextAttribute(hConsole, 1);
+    cout << "!\n";
 }
 
 ostream& operator <<(ostream& out, const Grid& myGrid)

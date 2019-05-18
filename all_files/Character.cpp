@@ -1,6 +1,9 @@
 #include "Character.h"
 #include <iostream>
+#include <windows.h>
 using namespace std;
+
+
 
 Character::Character()
 {
@@ -17,14 +20,24 @@ Character::Character(int life)
 }
 void Character::display()
 {
+    HANDLE hConsole;
+    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, 1);
     cout << "! ";
     for(unsigned i = 0; i < 3; i++)
     {
       if(i == pos)
+      {
+        SetConsoleTextAttribute(hConsole, 6);
         cout << signal << " ";
+      }
       else
+      {
+        SetConsoleTextAttribute(hConsole, 14);
         cout << "| ";
+      }
     }
+    SetConsoleTextAttribute(hConsole, 1);
     cout << '!' << endl;
 }
 
